@@ -1,3 +1,6 @@
+This project includes the following:
+
+
 1. Understand the Dataset
 
 Before diving into operations, it's crucial to understand:
