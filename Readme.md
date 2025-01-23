@@ -1,80 +1,102 @@
-This project includes the following:
+Uber Rides Data Analysis Report
 
+Executive Summary
 
-1. Understand the Dataset
+This report analyzes Uber trip data to uncover patterns in trip duration, mileage, purpose, and temporal trends. Key findings reveal insights into rider behavior, peak usage times, and opportunities for operational optimization. Below are the highlights and actionable recommendations.
+Key Insights
 
-Before diving into operations, it's crucial to understand:
+    Trip Characteristics
 
-    Columns: What each represents (START_DATE, CATEGORY, etc.).
-    Purpose: What kind of insights you want (e.g., mileage trends, trip categories).
-    Questions: Examples include:
-        What are the most common purposes for trips?
-        Are there patterns in trip distance?
-        What locations are frequently used for starting or stopping trips?
+        Short Trips Dominate: 75% of trips are under 10 miles, with a geometric mean of 4.7 miles.
 
-2. Data Cleaning
+        Long Trips: ~20% of trips exceed 10 miles, flagged as "long trips."
 
-Operations for ensuring data quality:
+    Trip Purpose
 
-    Check for Missing Data:
-        PURPOSE has missing values (NaN in row 1). Decide how to handle them:
-            Impute missing values (e.g., based on the most common purpose or leave as-is).
-            Analyze separately (trips with and without a defined purpose).
-    Ensure Data Consistency:
-        Confirm that START_DATE and END_DATE are in proper datetime format.
-        Verify that CATEGORY and PURPOSE are consistent (no typos, duplicates).
-    Remove or Flag Duplicates:
-        Check for duplicate rows (though it seems unique here).
+        Business Focus: 95% of trips are categorized under "Business."
 
-3. Feature Engineering
+        Missing Data: 43% of PURPOSE entries are marked "Unknown," indicating potential gaps in data collection.
 
-Derive new columns for more granular insights:
+    Temporal Trends
 
-    Trip Duration: Calculate trip time using END_DATE - START_DATE.
-    Day of Week/Hour of Day: Extract these from START_DATE for temporal analysis.
-        Example: Are most trips during weekdays or weekends?
-    Trip Type: Create a binary flag for long vs. short trips (e.g., MILES > 10).
+        Peak Days: Highest activity on Friday.
 
-4. Exploratory Data Analysis (EDA)
+        Busiest Hours: Trips peak around 1 PM, with consistent demand between 8 AM and 6 PM.
 
-Identify patterns and trends:
+    Trip Duration
 
-    Summary Statistics:
-        Average, median, and max MILES for trips.
-        Distribution of trips by CATEGORY and PURPOSE.
-    Visualization:
-        Bar Chart: Distribution of PURPOSE.
-        Histogram: MILES to understand trip distance distribution.
-        Heatmap: Frequency of trips by Day and Hour.
-    Temporal Analysis:
-        Analyze how mileage or trip counts vary over time (daily, monthly).
+        Average Duration: Most trips last 10–30 minutes, with outliers up to 1,000+ minutes.
 
-5. Hypothesis Testing
+Detailed Analysis
+1. Data Overview
 
-Apply statistical tests to answer questions:
+    Dataset: 1,155 trips after cleaning (1 duplicate removed).
 
-    Are trips with a purpose longer than trips without a purpose? (t-test)
-    Do trips to different locations have different average mileages? (ANOVA)
+    Columns Analyzed: Start/end time, category, start/stop location, miles, purpose, duration, day/hour, and long-trip flags.
 
-6. Insights & Patterns
+2. Mileage Distribution
 
-Answer key business questions:
+    Skewed Distribution: 75% of trips are short (under 10 miles), while longer trips (>50 miles) are rare but present.
 
-    High-Mileage Trips:
-        What purposes or categories contribute to the longest trips?
-    Common Purposes:
-        What is the most frequent purpose for trips, and does it differ by category?
+    Implication: Optimize driver allocation for short-distance demand while accommodating occasional long trips.
 
-7. Data Modeling (Optional)
+3. Purpose of Trips
 
-If needed for predictive analysis:
+    Top Purposes: "Business" (95%), "Customer Visit," "Meal/Entertain."
 
-    Predict PURPOSE or CATEGORY based on MILES, START, and STOP.
-    Cluster trips based on START, STOP, and MILES to find patterns.
+    Data Gap: 43% of PURPOSE entries are unlabeled.
 
-8. Reporting
+    Recommendation: Improve data collection processes to reduce "Unknown" entries.
 
-Summarize findings for stakeholders:
+4. Day and Hour Trends
 
-    Include visuals (charts/graphs).
-    Highlight actionable insights (e.g., optimize routes, analyze customer visits).
+    Weekday Bias: Friday see the highest trip volumes.
+
+    Hourly Peaks: Demand spikes at 9 AM and remains steady till 8 PM.
+
+    Action: Align driver availability with peak hours and days.
+
+5. Long-Trip Identification
+
+    Threshold: Trips exceeding 5.76 miles are flagged as "long"
+
+    Use Case: Tailor incentives for drivers handling long trips to ensure coverage.
+
+Recommendations
+
+    Enhance Data Collection:
+
+        Address missing PURPOSE data by updating the app interface to require purpose selection.
+
+    Driver Scheduling:
+
+        Allocate more drivers during peak hours (8 AM–6 PM) and on high-demand days (Fridays, Mondays and Tuesdays).
+
+    Long-Trip Incentives:
+
+        Offer bonuses or guarantees for drivers accepting long trips to improve service reliability.
+
+    Customer Segmentation:
+
+        Develop targeted promotions for frequent business travelers (e.g., corporate partnerships).
+
+Conclusion
+
+The analysis highlights Uber’s strong alignment with business-related travel and identifies opportunities to optimize operations around peak hours and data collection. Addressing gaps in PURPOSE labeling and leveraging temporal trends can enhance service quality and rider satisfaction.
+
+Next Steps:
+
+    Validate outliers in trip duration (e.g., 1,000+ minutes).
+
+    Implement A/B testing for PURPOSE field updates.
+
+Prepared by: Rohan Jha
+Data Source: UberDataset.csv (cleaned and processed)
+Tools Used: Python (pandas, matplotlib, seaborn), Jupyter Notebook
+
+Appendix:
+
+    Full code and visualizations available in the Jupyter notebook.
+
+    For questions or further analysis, contact rohanjhanepal@gmail.com.
+
