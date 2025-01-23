@@ -45,7 +45,7 @@ Identify patterns and trends:
     Visualization:
         Bar Chart: Distribution of PURPOSE.
         Histogram: MILES to understand trip distance distribution.
-        Heatmap: Frequency of trips by START and STOP locations.
+        Heatmap: Frequency of trips by Day and Hour.
     Temporal Analysis:
         Analyze how mileage or trip counts vary over time (daily, monthly).
 
